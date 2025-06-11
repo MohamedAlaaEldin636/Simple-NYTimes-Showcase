@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Simple NYTimes Showcase"
 include(":app")
+include(":feature:articles:domain")
