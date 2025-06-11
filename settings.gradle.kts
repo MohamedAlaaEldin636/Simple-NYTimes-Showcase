@@ -38,3 +38,4 @@ include(":feature:combinedModules")
 
 // Apps
 include(":app")
+include(":feature:articles:domain")
