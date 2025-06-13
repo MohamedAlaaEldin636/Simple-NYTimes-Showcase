@@ -1,9 +1,9 @@
-package my.ym.feature_articles_data.models.utils
+package my.ym.data_articles.models.utils
 
 import my.ym.data_shared.models.ApiDateAndTimeFormat
 import my.ym.data_shared.models.ApiDateFormat
-import my.ym.feature_articles_data.models.ApiViewedArticle
-import my.ym.feature_articles_domain.models.AppViewedArticle
+import my.ym.data_articles.models.ApiViewedArticle
+import my.ym.domain_articles.models.AppViewedArticle
 
 private const val SEMI_COLON = ';'
 

@@ -1,4 +1,4 @@
-package my.ym.feature_articles_domain.models
+package my.ym.domain_articles.models
 
 import java.time.LocalDateTime
 

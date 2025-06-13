@@ -1,4 +1,4 @@
-package my.ym.feature_articles_data
+package my.ym.data_articles
 
 import org.junit.Test
 

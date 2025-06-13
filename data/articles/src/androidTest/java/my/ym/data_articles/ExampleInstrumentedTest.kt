@@ -1,4 +1,4 @@
-package my.ym.feature_articles_data
+package my.ym.data_articles
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

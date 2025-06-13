@@ -1,4 +1,4 @@
-package my.ym.feature_articles_domain.models
+package my.ym.domain_articles.models
 
 data class AppMedia(
 	val type: Type,

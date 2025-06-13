@@ -1,4 +1,4 @@
-package my.ym.feature_articles_data.models
+package my.ym.data_articles.models
 
 import com.google.gson.annotations.SerializedName
 

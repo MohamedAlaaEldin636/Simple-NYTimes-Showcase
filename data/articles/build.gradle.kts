@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-	namespace = "my.ym.feature_articles_data"
+	namespace = "my.ym.data_articles"
 	compileSdk = 35
 
 	defaultConfig {
