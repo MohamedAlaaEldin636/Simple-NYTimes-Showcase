@@ -1,43 +1,52 @@
 # Simple NYTimes Showcase
 
-- This Repo contains a simple android app just to showcase coding using NYTimes Rest API inshallah.
+## Currently Under Development
 
-- (Currently under development) it will eventually show the project by implementing clean 
-architecture to the project with modularization by feature and MVI design pattern and it will 
-contain several modules, Note since we will implement Clean architecture then we need dependencies
-to point inward, and we will also modularize by feature meaning each feature is a self-contained 
-module, (in this example we have only 1 feature which is articles),
-So expected modules will be as follows
-  - :feature:articles:domain
-    - Pure kotlin module, contains entities(models), repos interfaces and optional use cases.
-    - has no dependencies
-  - :feature:articles:data
-    - Android module, contains implementation of the repos and handle data sources whether local 
-    or remote.
-    - depends on :domain:articles
-  - :feature:articles:ui (same as :presentation:articles)
-    - Android module, contains screens related to this feature.
-    - depends on :domain:articles
-  - :feature:articles
-    - Android module, uses hilt to wire above dependencies together so that it reduces work in :app 
-    modules by making the feature cleaner as it handles even DI for itself and make :app dependencies
-    become less.
-    - depends on :domain:articles, :data:articles, :ui:articles
-    - exposes :ui:article -> to be used by :app
-  - :app -> Entry point for the application and also contains the navigation layer
-    - depends on all feature modules to perform navigation on them as intended inshallah 
-    - depends on :feature:articles
+- This Repo contains a simple android app just to showcase coding using **_NYTimes Rest API_** inshallah.
+
+- Uses Clean Architecture in the project with modularization by feature and MVI design pattern.
+  - Note since we will implement Clean architecture then we need dependencies to point inward.
+  - will also modularize by feature meaning each feature is a self-contained module
+  - Basically will contain 3 modules (domain, data & presentation), However actually will have more to be 
+  scalable when we need to add more features inshallah.
+  - Note we will use name of ui instead of presentation (same concept so a shorter name is easier)
+
+- Modules (Note in this example there is only 1 feature)
+  - Core
+    - `:core:kotlin` -> contains utilities related to kotlin programming language only
+      - Optional but important if needed
+    - `:core:android` -> contains utilities related to android library module
+      - Optional but important if needed
+  - Domain
+    - `:domain:shared` -> for common models used among several features
+      - Optional but important if needed
+    - `:domain:articles` -> for models & repos interfaces for articles feature
+  - Data
+    - `:data:shared` -> for common code used among several features
+      - Optional but important if needed
+    - `:data:articles` -> implements repos signatures defined in the corresponding domain articles 
+    feature by getting the data from the correct sources whether remote, local or both
+  - UI (Presentation)
+    - `:ui:shared` -> for common code used among several features
+      - Optional but important if needed
+    - `:ui:articles` -> implements screens representing articles feature
+  - Feature
+    - `:feature:articles` -> Android module, uses hilt to wire above dependencies together so that 
+    it reduces work in `:app` modules by making the feature cleaner as it handles even DI for itself 
+    and make `:app` dependencies become less, and exposes only the ui module of the feature, instead 
+    of making `:app` module depend on all 3 ui, domain & data to correctly use Hilt inshallah.
+      - Optional but important if needed
+  - App
+    - `:app` -> entry point of the application and contains the navigation layer to tie all features 
+    and even the screens in a single feature inshallah.
 
 - Note approach could 've been like
-  - :domain
-  - :data
-  - :ui
-  - :app
+  - `:domain`
+  - `:data`
+  - `:ui`
+  - `:app`
   - But I wanted to apply the previous one to implement the self-contained feature 
   concept for the modularization by feature
 
-- Additional Note about above modules, in a full application there can be more modules like
-  - :core:kotlin -> for common pure kotlin code utilities
-  - :core:ui -> for common business agnostic composables
-  - :shared:domain -> for shared models among several features
-  - :shared:data -> for shared remote or local fetching ex. common safe function of `safeApiCall`
+- Additional Note, In a large app there even can be test module to test 2 or more related features
+and not whole app by residing in `:test:scenario_name` module if needed
