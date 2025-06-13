@@ -25,6 +25,14 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "SimpleNYTimesShowcase"
 
-include(":app")
+// Core Code ( Kotlin - Android )
+include(":core:kotlin"/*, ":core:android"*/)
 
-include(":feature:articles:domain", ":feature:articles:data")
+// Shared code between features modules
+include(":domain:shared", ":data:shared")
+
+// Feature ( article )
+include(":domain:articles", ":data:articles")
+
+// Apps
+include(":app")
