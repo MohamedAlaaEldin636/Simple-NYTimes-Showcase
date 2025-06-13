@@ -1,7 +1,7 @@
-package my.ym.feature_articles_data.models.utils
+package my.ym.data_articles.models.utils
 
-import my.ym.feature_articles_data.models.ApiMedia
-import my.ym.feature_articles_domain.models.AppMedia
+import my.ym.data_articles.models.ApiMedia
+import my.ym.domain_articles.models.AppMedia
 
 fun ApiMedia.toAppMedia(): AppMedia {
 	return AppMedia(
