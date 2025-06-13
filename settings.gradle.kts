@@ -11,6 +11,7 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
+
 dependencyResolutionManagement {
 	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 	repositories {
@@ -19,6 +20,11 @@ dependencyResolutionManagement {
 	}
 }
 
-rootProject.name = "Simple NYTimes Showcase"
+// Used to be able to use local module via projects.* in gradle inshallah
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+rootProject.name = "SimpleNYTimesShowcase"
+
 include(":app")
-include(":feature:articles:domain")
+
+include(":feature:articles:domain", ":feature:articles:data")

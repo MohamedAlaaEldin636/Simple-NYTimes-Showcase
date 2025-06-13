@@ -1,6 +1,9 @@
 package my.ym.feature_articles_domain.models
 
-data class NYTViewedArticle(
+import java.time.LocalDate
+import java.time.LocalDateTime
+
+data class AppViewedArticle(
 	val title: String,
 	val summary: String,
 
@@ -9,12 +12,10 @@ data class NYTViewedArticle(
 	/** Ex. By Mohamed Alaa */
 	val byLine: String,
 
-	val publishedDate: String,
-	val lastUpdatedDate: String,
-	val lastUpdatedTime: String,
+	val publishedAt: LocalDate?,
+	val lastUpdatedAt: LocalDateTime?,
 
-	/** separated by Semi Colon ';' */
 	val keywords: List<String>,
 
-	val media: List<NYTMedia>,
+	val media: List<AppMedia>,
 )

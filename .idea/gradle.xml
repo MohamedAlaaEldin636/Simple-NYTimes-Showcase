@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/articles" />
+            <option value="$PROJECT_DIR$/feature/articles/data" />
             <option value="$PROJECT_DIR$/feature/articles/domain" />
           </set>
         </option>
