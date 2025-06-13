@@ -2,7 +2,7 @@ package my.ym.domain_shared.models
 
 sealed class AppResult<T> {
 
-	data object Loading : AppResult<Nothing>()
+	class Loading<T> : AppResult<T>()
 
 	sealed class Immediate<T> : AppResult<T>()
 
@@ -10,15 +10,15 @@ sealed class AppResult<T> {
 		val data: T
 	) : Immediate<T>()
 
-	sealed class Failure : Immediate<Nothing>() {
+	sealed class Failure<T> : Immediate<T>() {
 
 		/** - Used in case of no internet connection */
-		data object NoInternetConnection : Failure()
+		class NoInternetConnection<T> : Failure<T>()
 
 		/** - Used in case of a timeout indicating slow internet connection */
-		data object PoorInternetConnection : Failure()
+		class PoorInternetConnection<T> : Failure<T>()
 
-		data class Unexpected(val throwable: Throwable? = null) : Failure()
+		data class Unexpected<T>(val throwable: Throwable? = null) : Failure<T>()
 
 	}
 

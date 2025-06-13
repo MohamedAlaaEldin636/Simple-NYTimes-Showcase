@@ -16,6 +16,14 @@ kotlinx-coroutines = "1.10.2"
 # Retrofit
 retrofit = "3.0.0"
 
+# Used to fix warning shown when using Mockk with Junit 5 in testing.
+javaagent-test = "0.8.0"
+
+# Test - Mockk
+mockk = "1.14.2"
+org-junit = "5.13.1"
+byte-buddy-agent = "1.14.17"
+
 [libraries]
 
 # Retrofit
@@ -43,6 +51,13 @@ androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
+mockk-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+org-junit-bom = { group = "org.junit", name = "junit-bom", version.ref = "org-junit" }
+org-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter" }
+org-junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" }
+byte-buddy-agent = { group = "net.bytebuddy", name = "byte-buddy-agent", version.ref = "byte-buddy-agent" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
 # Test Android
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -54,4 +69,6 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+# Used to fix warning shown when using Mockk with Junit 5 in testing.
+javaagent-test = { id = "com.ryandens.javaagent-test", version.ref = "javaagent-test" }
 
