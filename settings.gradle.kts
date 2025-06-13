@@ -32,7 +32,7 @@ include(":core:kotlin"/*, ":core:android"*/)
 include(":domain:shared", ":data:shared")
 
 // Feature ( article )
-include(":domain:articles", ":data:articles")
+include(":feature:articles", ":ui:articles", ":data:articles", ":domain:articles")
 
 // Apps
 include(":app")
