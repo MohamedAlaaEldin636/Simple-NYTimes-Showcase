@@ -36,4 +36,3 @@ include(":feature:articles", ":ui:articles", ":data:articles", ":domain:articles
 
 // Apps
 include(":app")
-include(":feature:articles:domain")
