@@ -1,8 +1,10 @@
 package my.ym.ui_articles.screens.mostPopularArticles.components
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.only
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -12,6 +14,7 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -76,7 +79,8 @@ internal fun MostPopularArticlesScreenScope.TopAppBarImpl(
 					contentDescription = stringResource(R.string.information)
 				)
 			}
-		}
+		},
+		windowInsets = TopAppBarDefaults.windowInsets.only(WindowInsetsSides.Horizontal)
 	)
 }
 

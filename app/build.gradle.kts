@@ -30,6 +30,9 @@ android {
 		}
 	}
 	compileOptions {
+		// Java 8+ API desugaring support
+		isCoreLibraryDesugaringEnabled = true
+
 		sourceCompatibility = JavaVersion.VERSION_11
 		targetCompatibility = JavaVersion.VERSION_11
 	}
@@ -43,9 +46,12 @@ android {
 
 dependencies {
 
+	// Java 8+ API desugaring support
+	coreLibraryDesugaring(libs.android.desugar.jdk)
+
 	// Local Modules
+	implementation(projects.feature.articles)
 	implementation(projects.ui.shared)
-	implementation(projects.ui.articles)
 
 	// Androidx
 	implementation(libs.androidx.core.ktx)
@@ -80,4 +86,8 @@ dependencies {
 	androidTestImplementation(platform(libs.androidx.compose.bom))
 	androidTestImplementation(libs.androidx.ui.test.junit4)
 
+}
+
+hilt {
+	enableAggregatingTask = true
 }

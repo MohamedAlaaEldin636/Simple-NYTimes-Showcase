@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -20,12 +21,14 @@ import my.ym.ui_articles.R
 import my.ym.ui_shared.utils.getLocalizedText
 import java.time.Duration
 import java.time.LocalDateTime
+import javax.inject.Inject
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.toKotlinDuration
 
-class MostPopularArticlesViewModel(
+@HiltViewModel
+class MostPopularArticlesViewModel @Inject constructor(
 	application: Application,
 	private val repoArticles: RepoArticles,
 ) : AndroidViewModel(application) {

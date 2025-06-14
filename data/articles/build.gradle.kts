@@ -1,6 +1,8 @@
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
+	alias(libs.plugins.hilt.android)
+	alias(libs.plugins.ksp)
 }
 
 android {
@@ -51,6 +53,10 @@ dependencies {
 	implementation(libs.retrofit2.retrofit)
 	implementation(libs.retrofit2.converter.gson)
 
+	// Hilt
+	implementation(libs.hilt.android)
+	ksp(libs.hilt.android.compiler)
+
 	// Test
 	testImplementation(libs.junit)
 
@@ -59,3 +65,8 @@ dependencies {
 	androidTestImplementation(libs.androidx.espresso.core)
 
 }
+
+hilt {
+	enableAggregatingTask = true
+}
+

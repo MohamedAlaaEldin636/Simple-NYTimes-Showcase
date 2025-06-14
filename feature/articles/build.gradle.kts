@@ -1,6 +1,8 @@
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
+	alias(libs.plugins.hilt.android)
+	alias(libs.plugins.ksp)
 }
 
 android {
@@ -24,6 +26,9 @@ android {
 		}
 	}
 	compileOptions {
+		// Java 8+ API desugaring support
+		isCoreLibraryDesugaringEnabled = true
+
 		sourceCompatibility = JavaVersion.VERSION_11
 		targetCompatibility = JavaVersion.VERSION_11
 	}
@@ -34,11 +39,21 @@ android {
 
 dependencies {
 
+	// Java 8+ API desugaring support
+	coreLibraryDesugaring(libs.android.desugar.jdk)
+
 	// Local Modules
-	implementation(projects.domain.articles)
+	api(projects.domain.articles)
+	api(projects.data.articles)
+	api(projects.ui.articles)
 
 	// Androidx
 	implementation(libs.androidx.core.ktx)
+	implementation(libs.androidx.hilt.navigation.compose)
+
+	// Hilt
+	implementation(libs.hilt.android)
+	ksp(libs.hilt.android.compiler)
 
 	// Test
 	testImplementation(libs.junit)
@@ -47,4 +62,8 @@ dependencies {
 	androidTestImplementation(libs.androidx.junit)
 	androidTestImplementation(libs.androidx.espresso.core)
 
+}
+
+hilt {
+	enableAggregatingTask = true
 }
