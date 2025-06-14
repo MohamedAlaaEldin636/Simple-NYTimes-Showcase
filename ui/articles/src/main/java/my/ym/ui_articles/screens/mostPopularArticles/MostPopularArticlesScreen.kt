@@ -53,10 +53,9 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import kotlin.time.Duration.Companion.seconds
 
-/** todo 1- don't need params and instead call viewModel from here walla mn el nav graph wala eh inshallah ?! */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MostPopularArticlesScreen(
+internal fun MostPopularArticlesScreen(
 	goToArticleDetailsScreen: (id: Long) -> Unit,
 
 	handleIntent: (intent: MostPopularArticlesIntent) -> Unit,

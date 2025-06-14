@@ -38,7 +38,7 @@ android {
 dependencies {
 
 	// Java 8+ API desugaring support
-	coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+	coreLibraryDesugaring(libs.android.desugar.jdk)
 
 	// Local Modules
 	implementation(projects.core.kotlin)

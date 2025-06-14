@@ -2,6 +2,8 @@ plugins {
 	alias(libs.plugins.android.application)
 	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.kotlin.compose)
+	alias(libs.plugins.hilt.android)
+	alias(libs.plugins.ksp)
 }
 
 android {
@@ -45,6 +47,8 @@ dependencies {
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
 	implementation(libs.androidx.activity.compose)
+	implementation(libs.androidx.navigation.compose)
+	implementation(libs.androidx.hilt.navigation.compose)
 
 	// Androidx Compose
 	implementation(platform(libs.androidx.compose.bom))
@@ -55,6 +59,13 @@ dependencies {
 	// Androidx Compose ( Debug )
 	debugImplementation(libs.androidx.compose.ui.tooling)
 	debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+	// Kotlinx JSON Serialization
+	implementation(libs.kotlinx.serialization.json)
+
+	// Hilt
+	implementation(libs.hilt.android)
+	ksp(libs.hilt.android.compiler)
 
 	// Test
 	testImplementation(libs.junit)
