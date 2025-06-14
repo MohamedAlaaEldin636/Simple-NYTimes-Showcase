@@ -43,6 +43,10 @@ android {
 
 dependencies {
 
+	// Local Modules
+	implementation(projects.ui.shared)
+	implementation(projects.ui.articles)
+
 	// Androidx
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
