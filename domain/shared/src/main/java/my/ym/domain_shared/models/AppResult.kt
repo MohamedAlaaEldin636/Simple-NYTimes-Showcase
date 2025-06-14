@@ -10,15 +10,26 @@ sealed class AppResult<T> {
 		val data: T
 	) : Immediate<T>()
 
-	sealed class Failure<T> : Immediate<T>() {
+	data class Failure<T>(val reason: Reason) : Immediate<T>() {
 
-		/** - Used in case of no internet connection */
-		class NoInternetConnection<T> : Failure<T>()
+		companion object;
 
-		/** - Used in case of a timeout indicating slow internet connection */
-		class PoorInternetConnection<T> : Failure<T>()
+		/**
+		 * ###### Can be 1 of the following
+		 *
+		 * - [NoInternetConnection]
+		 * - [PoorInternetConnection]
+		 * - [Unexpected]
+		 */
+		sealed interface Reason {
+			/** - Used in case of no internet connection */
+			data object NoInternetConnection : Reason
 
-		data class Unexpected<T>(val throwable: Throwable? = null) : Failure<T>()
+			/** - Used in case of a timeout indicating slow internet connection */
+			data object PoorInternetConnection : Reason
+
+			data class Unexpected(val throwable: Throwable? = null) : Reason
+		}
 
 	}
 

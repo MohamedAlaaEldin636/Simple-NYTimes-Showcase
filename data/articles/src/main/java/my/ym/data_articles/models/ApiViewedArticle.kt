@@ -3,6 +3,8 @@ package my.ym.data_articles.models
 import com.google.gson.annotations.SerializedName
 
 data class ApiViewedArticle(
+	val id: Long?,
+
 	val title: String?,
 	@SerializedName("abstract")
 	val summary: String?,

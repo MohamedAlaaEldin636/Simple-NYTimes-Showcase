@@ -9,6 +9,7 @@ private const val SEMI_COLON = ';'
 
 fun ApiViewedArticle.toAppViewedArticle(): AppViewedArticle {
 	return AppViewedArticle(
+		id = id ?: 0,
 		title = title.orEmpty(),
 		summary = summary.orEmpty(),
 		section = section.orEmpty(),

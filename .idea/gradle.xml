@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/feature/articles" />
             <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/ui/articles" />
+            <option value="$PROJECT_DIR$/ui/shared" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
-
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
@@ -7,7 +5,7 @@ plugins {
 }
 
 android {
-	namespace = "my.ym.ui_articles"
+	namespace = "my.ym.ui_shared"
 	compileSdk = 35
 
 	defaultConfig {
@@ -15,6 +13,8 @@ android {
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
+
+		buildConfigField("String", "PROJECT_GITHUB_REPO_LINK", "\"https://github.com/MohamedAlaaEldin636/Simple-NYTimes-Showcase\"")
 	}
 
 	buildTypes {
@@ -35,8 +35,10 @@ android {
 	}
 	kotlinOptions {
 		jvmTarget = "11"
+	}
 
-		freeCompilerArgs += "-Xwhen-guards"
+	buildFeatures {
+		buildConfig = true
 	}
 }
 
@@ -46,9 +48,7 @@ dependencies {
 	coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
 
 	// Local Modules
-	implementation(projects.ui.shared)
-	implementation(projects.domain.articles)
-	implementation(projects.core.kotlin)
+	implementation(projects.domain.shared)
 
 	// Androidx
 	implementation(libs.androidx.core.ktx)

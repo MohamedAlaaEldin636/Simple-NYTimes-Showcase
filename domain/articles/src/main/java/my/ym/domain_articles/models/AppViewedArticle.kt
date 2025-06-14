@@ -4,6 +4,8 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class AppViewedArticle(
+	val id: Long,
+
 	val title: String,
 	val summary: String,
 
