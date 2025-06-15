@@ -26,5 +26,6 @@ data class ApiViewedArticle(
 	@SerializedName("adx_keywords")
 	val keywords: String?,
 
-	val media: List<ApiMedia>?,
+	@SerializedName("media")
+	val listOfMedia: List<ApiMedia>?,
 )

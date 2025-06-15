@@ -4,7 +4,7 @@ data class AppMedia(
 	val type: Type,
 	val caption: String,
 	val copyright: String,
-	val mediaMetadata: List<AppMediaMetadata>,
+	val listOfMediaMetadata: List<AppMediaMetadata>,
 ) {
 	enum class Type {
 		Image,

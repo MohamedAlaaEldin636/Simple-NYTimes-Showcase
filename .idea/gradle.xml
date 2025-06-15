@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/domain/shared" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/articles" />
+            <option value="$PROJECT_DIR$/feature/combinedModules" />
             <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/ui/articles" />
             <option value="$PROJECT_DIR$/ui/shared" />

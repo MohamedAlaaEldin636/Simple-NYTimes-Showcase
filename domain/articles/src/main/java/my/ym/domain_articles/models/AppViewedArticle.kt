@@ -19,5 +19,5 @@ data class AppViewedArticle(
 
 	val keywords: List<String>,
 
-	val media: List<AppMedia>,
+	val listOfMedia: List<AppMedia>,
 )

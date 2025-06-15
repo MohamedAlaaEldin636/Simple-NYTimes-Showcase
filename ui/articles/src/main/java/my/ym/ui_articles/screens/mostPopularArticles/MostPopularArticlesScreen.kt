@@ -309,7 +309,7 @@ private fun Sample() = ThemeApp {
 			publishedAt = LocalDate.now().minusDays(it.inc().toLong()),
 			lastUpdatedAt = LocalDateTime.now().minusDays(it.toLong()),
 			keywords = List(size = 10) { innerIt -> "Keyword $innerIt" },
-			media = emptyList()
+			listOfMedia = emptyList()
 		)
 	}
 

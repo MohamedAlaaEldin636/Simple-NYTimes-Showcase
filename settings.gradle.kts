@@ -29,11 +29,12 @@ rootProject.name = "SimpleNYTimesShowcase"
 include(":core:kotlin"/*, ":core:android"*/)
 
 // Shared code between features modules
-include(":domain:shared", ":data:shared")
+include(":ui:shared", ":domain:shared", ":data:shared")
 
 // Feature ( article )
 include(":feature:articles", ":ui:articles", ":data:articles", ":domain:articles")
+// Container of all features
+include(":feature:combinedModules")
 
 // Apps
 include(":app")
-include(":ui:shared")

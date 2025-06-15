@@ -17,6 +17,6 @@ fun ApiViewedArticle.toAppViewedArticle(): AppViewedArticle {
 		publishedAt = ApiDateFormat(publishedDate).toLocalDateOrNull(),
 		lastUpdatedAt = ApiDateAndTimeFormat(lastUpdatedDateAndTime).toLocalDateTimeOrNull(),
 		keywords = keywords.orEmpty().split(SEMI_COLON),
-		media = media.orEmpty().map { it.toAppMedia() }
+		listOfMedia = listOfMedia.orEmpty().map { it.toAppMedia() }
 	)
 }

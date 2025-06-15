@@ -64,10 +64,16 @@ dependencies {
 
 	// Androidx
 	implementation(libs.androidx.core.ktx)
+	implementation(libs.androidx.room.runtime)
+	ksp(libs.androidx.room.compiler)
+	implementation(libs.androidx.room.ktx)
 
 	// Retrofit
 	implementation(libs.retrofit2.retrofit)
 	implementation(libs.retrofit2.converter.gson)
+
+	// Timber
+	implementation(libs.timber)
 
 	// Hilt
 	implementation(libs.hilt.android)

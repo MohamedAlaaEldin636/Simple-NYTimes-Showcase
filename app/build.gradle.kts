@@ -50,6 +50,7 @@ dependencies {
 	coreLibraryDesugaring(libs.android.desugar.jdk)
 
 	// Local Modules
+	implementation(projects.feature.combinedModules)
 	implementation(projects.feature.articles)
 	implementation(projects.ui.shared)
 

@@ -6,6 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import my.ym.data_articles.BuildConfig
 import my.ym.data_articles.remote.articles.ApiServiceArticles
+import my.ym.data_shared.utils.GsonUtils
 import okhttp3.Interceptor
 import javax.inject.Singleton
 import okhttp3.OkHttpClient
@@ -30,7 +31,7 @@ data object HiltModuleOfNetwork {
 		return Retrofit.Builder()
 			.baseUrl(BuildConfig.API_SERVICE_NYTIMES_API_BASE_URL)
 			.client(okHttpClient)
-			.addConverterFactory(GsonConverterFactory.create())
+			.addConverterFactory(GsonConverterFactory.create(GsonUtils.gson))
 			.build()
 	}
 
