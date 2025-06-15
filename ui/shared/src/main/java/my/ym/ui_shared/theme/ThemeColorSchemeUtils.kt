@@ -91,7 +91,7 @@ data object ThemeColorSchemeUtils {
 			color = Color(0xFF2C7B38),
 			onColor = Color(0xFFFFFFFF),
 			colorContainer = Color(0xFFB2F1B2),
-			onColorContainer = Color(0xFFB2F1B2),
+			onColorContainer = Color(0xFF002100),
 		),
 		warning = ColorFamily(
 			color = Color(0xFF6D5C00),

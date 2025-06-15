@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
@@ -5,8 +7,15 @@ plugins {
 	alias(libs.plugins.ksp)
 }
 
+val localProperties = Properties()
+localProperties.load(project.rootProject.file("local.properties").inputStream())
+
+val apiServiceNYTimesApiKey = localProperties["API_SERVICE_NYTIMES_API_KEY"] as? String
+
+val apiServiceNYTimesApiBaseUrl = localProperties["API_SERVICE_NYTIMES_API_BASE_URL"] as? String
+
 android {
-	namespace = "my.ym.feature_articles"
+	namespace = "my.ym.feature_shared"
 	compileSdk = 35
 
 	defaultConfig {
@@ -14,6 +23,9 @@ android {
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
+
+		buildConfigField("String", "API_SERVICE_NYTIMES_API_KEY", "\"$apiServiceNYTimesApiKey\"")
+		buildConfigField("String", "API_SERVICE_NYTIMES_API_BASE_URL", "\"$apiServiceNYTimesApiBaseUrl\"")
 	}
 
 	buildTypes {
@@ -35,6 +47,10 @@ android {
 	kotlinOptions {
 		jvmTarget = "11"
 	}
+
+	buildFeatures {
+		buildConfig = true
+	}
 }
 
 dependencies {
@@ -43,11 +59,7 @@ dependencies {
 	coreLibraryDesugaring(libs.android.desugar.jdk)
 
 	// Local Modules
-	implementation(projects.feature.shared)
 	implementation(projects.data.shared)
-	implementation(projects.domain.articles)
-	implementation(projects.data.articles)
-	api(projects.ui.articles)
 
 	// Androidx
 	implementation(libs.androidx.core.ktx)

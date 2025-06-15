@@ -44,7 +44,6 @@ class RepoArticlesImpl(
 				is AppResult.Failure -> appResult.reason
 			}
 
-			// todo to ensure changes correctly isa. or if from backend then use immediately kda ya3ne isa.
 			emitAll(
 				localDataSourceArticles.getAppSnapshotOfArticles(
 					fetchFailureReason = failureReason
