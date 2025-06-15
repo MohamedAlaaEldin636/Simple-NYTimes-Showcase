@@ -89,16 +89,28 @@ class MostPopularArticlesViewModel @Inject constructor(
 
 						loopAndUpdateTheUpdatedSinceText(initialDelay = delayDuration)
 
-						val messageAtBottom = when (state.messageAtBottom?.type) {
-							MostPopularArticlesState.MessageType.Error,
-							MostPopularArticlesState.MessageType.Warning -> {
-								MostPopularArticlesState.MessageWithType(
-									message = application.getString(R.string.data_fetched_from_internet_successfully_and_is_now_up_to_date),
-									type = MostPopularArticlesState.MessageType.Success,
-								)
-							}
-							else -> {
-								null
+						val messageAtBottom = if (appResult.data.fetchFailureReason != null) {
+							MostPopularArticlesState.MessageWithType(
+								message = appResult.data.fetchFailureReason?.getLocalizedText(application).orEmpty(),
+								//appResult.data.fetchedFromApiAt.plusDays(1) > LocalDateTime.now()
+								type = if (appResult.data.fetchedFromApiAt.plusDays(1) > LocalDateTime.now()) {
+									MostPopularArticlesState.MessageType.Warning
+								}else {
+									MostPopularArticlesState.MessageType.Error
+								},
+							)
+						}else {
+							when (state.messageAtBottom?.type) {
+								MostPopularArticlesState.MessageType.Error,
+								MostPopularArticlesState.MessageType.Warning -> {
+									MostPopularArticlesState.MessageWithType(
+										message = application.getString(R.string.data_fetched_from_internet_successfully_and_is_now_up_to_date),
+										type = MostPopularArticlesState.MessageType.Success,
+									)
+								}
+								else -> {
+									null
+								}
 							}
 						}
 

@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 				) {
 					composableOfMostPopularArticlesScreen(
 						goToArticleDetailsScreen = { id ->
-							TODO("id -> $id")
+							//TODO("id -> $id")
 						}
 					)
 				}

@@ -71,6 +71,9 @@ dependencies {
 	// Kotlinx JSON Serialization
 	implementation(libs.kotlinx.serialization.json)
 
+	// Timber
+	implementation(libs.timber)
+
 	// Hilt
 	implementation(libs.hilt.android)
 	ksp(libs.hilt.android.compiler)

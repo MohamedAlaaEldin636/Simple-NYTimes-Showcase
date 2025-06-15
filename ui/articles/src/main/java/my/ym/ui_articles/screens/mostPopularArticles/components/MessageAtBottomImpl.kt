@@ -50,13 +50,13 @@ internal fun MostPopularArticlesScreenScope.MessageAtBottomImpl(
 		modifier = modifier
 			.fillMaxWidth()
 			.background(color = backgroundColor)
-			.padding(all = 8.dp),
+			.padding(vertical = 8.dp, horizontal = 16.dp),
 		horizontalArrangement = Arrangement.spacedBy(space = 8.dp),
+		verticalAlignment = Alignment.CenterVertically
 	) {
 		Text(
 			modifier = Modifier
-				.weight(1f)
-				.align(alignment = Alignment.Top),
+				.weight(1f),
 			text = messageAtBottom.message,
 			style = ThemeApp.typography.bodyMedium,
 			color = contentColor,
@@ -73,7 +73,7 @@ internal fun MostPopularArticlesScreenScope.MessageAtBottomImpl(
 			}
 		}else {
 			Button(
-				modifier = Modifier.align(alignment = Alignment.Bottom)
+				modifier = Modifier
 					.defaultMinSize(minWidth = 0.dp, minHeight = 0.dp),
 				onClick = onDismissRequest,
 				shape = RoundedCornerShape(size = 12.dp),
