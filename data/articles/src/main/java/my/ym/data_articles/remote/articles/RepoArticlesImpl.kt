@@ -2,7 +2,12 @@ package my.ym.data_articles.remote.articles
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import my.ym.data_articles.models.utils.toApiDayPeriodOfMostPopularArticles
 import my.ym.data_articles.models.utils.toAppSnapshotOfArticles
 import my.ym.domain_articles.models.AppDayPeriodOfMostPopularArticles
@@ -25,6 +30,7 @@ class RepoArticlesImpl(
 
 			delay(3.seconds)
 
+			// todo insert into room and get from room is better inshallah
 			emit(
 				remoteDataSourceArticles.getMostPopularArticlesByViewsInLastNDays(
 					day = period.toApiDayPeriodOfMostPopularArticles()
@@ -32,7 +38,12 @@ class RepoArticlesImpl(
 					it.toAppSnapshotOfArticles()
 				}
 			)
-		}
+
+			//emitAll(anotherFlowSourceWhichIsRoomInshallah) // todo ensure it works isa.
+		}.distinctUntilChanged()
+		// todo to ensure changes correctly isa. or if from backend then use immediately kda ya3ne isa.
+			/*databaseOne.stateIn()
+			.map {  }*/
 	}
 
 }
