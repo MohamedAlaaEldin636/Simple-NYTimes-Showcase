@@ -43,8 +43,8 @@ dependencies {
 	coreLibraryDesugaring(libs.android.desugar.jdk)
 
 	// Local Modules
-	api(projects.domain.articles)
-	api(projects.data.articles)
+	implementation(projects.domain.articles)
+	implementation(projects.data.articles)
 	api(projects.ui.articles)
 
 	// Androidx
@@ -54,6 +54,13 @@ dependencies {
 	// Hilt
 	implementation(libs.hilt.android)
 	ksp(libs.hilt.android.compiler)
+
+	// Retrofit
+	implementation(libs.retrofit2.retrofit)
+	implementation(libs.retrofit2.converter.gson)
+
+	// OkHttp Logging Interceptor
+	implementation(libs.okhttp3.logging.interceptor)
 
 	// Test
 	testImplementation(libs.junit)

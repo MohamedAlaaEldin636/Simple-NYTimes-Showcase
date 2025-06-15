@@ -5,6 +5,20 @@ plugins {
 	alias(libs.plugins.ksp)
 }
 
+val localPropertiesFile = project.rootProject.file("local.properties")
+
+val apiServiceNYTimesApiKey = if (localPropertiesFile.exists()) {
+	properties["API_SERVICE_NYTIMES_API_KEY"] as? String
+}else {
+	null
+}
+
+val apiServiceNYTimesApiBaseUrl = if (localPropertiesFile.exists()) {
+	properties["API_SERVICE_NYTIMES_API_BASE_URL"] as? String
+}else {
+	null
+}
+
 android {
 	namespace = "my.ym.data_articles"
 	compileSdk = 35
@@ -14,6 +28,9 @@ android {
 
 		testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles("consumer-rules.pro")
+
+		buildConfigField("String", "API_SERVICE_NYTIMES_API_KEY", "\"$apiServiceNYTimesApiKey\"")
+		buildConfigField("String", "API_SERVICE_NYTIMES_API_BASE_URL", "\"$apiServiceNYTimesApiBaseUrl\"")
 	}
 
 	buildTypes {
@@ -34,6 +51,10 @@ android {
 	}
 	kotlinOptions {
 		jvmTarget = "11"
+	}
+
+	buildFeatures {
+		buildConfig = true
 	}
 }
 

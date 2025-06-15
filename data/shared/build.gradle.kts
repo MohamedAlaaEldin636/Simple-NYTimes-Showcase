@@ -44,8 +44,15 @@ dependencies {
 	implementation(projects.core.kotlin)
 	implementation(projects.domain.articles)
 
+	// Timber
+	implementation(libs.timber)
+
 	// Androidx
 	implementation(libs.androidx.core.ktx)
+
+	// Retrofit
+	implementation(libs.retrofit2.retrofit)
+	implementation(libs.retrofit2.converter.gson)
 
 	// Test
 	testImplementation(libs.junit)

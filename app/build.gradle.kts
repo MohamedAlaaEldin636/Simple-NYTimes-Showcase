@@ -53,6 +53,9 @@ dependencies {
 	implementation(projects.feature.articles)
 	implementation(projects.ui.shared)
 
+	// Timber
+	implementation(libs.timber)
+
 	// Androidx
 	implementation(libs.androidx.core.ktx)
 	implementation(libs.androidx.lifecycle.runtime.ktx)
