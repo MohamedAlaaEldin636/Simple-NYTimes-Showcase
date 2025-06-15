@@ -10,8 +10,8 @@ import java.io.IOException
 
 abstract class BaseRemoteDataSource {
 
-	protected suspend inline fun <reified T> safeApiCall(
-		crossinline fetch: suspend () -> Response<T>
+	protected suspend inline fun <reified T : Any> safeApiCall(
+		crossinline fetch: suspend () -> Response<T?>
 	): AppResult.Immediate<T> {
 		return withContext(context = Dispatchers.IO) {
 			try {

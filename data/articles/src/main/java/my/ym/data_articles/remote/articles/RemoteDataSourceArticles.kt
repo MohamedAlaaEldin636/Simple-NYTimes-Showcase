@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class RemoteDataSourceArticles @Inject constructor(
+class RemoteDataSourceArticles @Inject constructor(
 	private val apiServiceArticles: ApiServiceArticles,
 ) : BaseRemoteDataSource() {
 

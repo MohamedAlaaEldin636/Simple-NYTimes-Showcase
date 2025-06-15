@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface ApiServiceArticles {
 
-	@GET("/mostpopular/v2/viewed/{lastNDays}.json")
+	@GET("mostpopular/v2/viewed/{lastNDays}.json")
 	suspend fun getMostPopularArticlesByViewsInLastNDays(
 		@Path("lastNDays") lastNDays: Int,
 	): Response<ApiSnapshotOfArticles?>

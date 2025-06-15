@@ -6,18 +6,13 @@ import my.ym.domain_shared.models.AppResult
 import my.ym.domain_articles.models.AppSnapshotOfArticles
 import my.ym.domain_articles.repos.RepoArticles
 
-/** Used for testing */
-internal class GetMostPopularViewedArticlesUseCase(
+class GetMostPopularViewedArticlesLastDayUseCase /*@Inject */constructor(
 	private val repoArticles: RepoArticles,
 ) {
 
-	operator fun invoke(periodInDays: Int): Flow<AppResult<AppSnapshotOfArticles>> =
+	operator fun invoke(): Flow<AppResult<AppSnapshotOfArticles>> =
 		repoArticles.getMostPopularViewedArticles(
-			period = when (periodInDays) {
-				1 -> AppDayPeriodOfMostPopularArticles.LastDay
-				7 -> AppDayPeriodOfMostPopularArticles.LastWeek
-				else -> AppDayPeriodOfMostPopularArticles.LastMonth
-			}
+			period = AppDayPeriodOfMostPopularArticles.LastDay
 		)
 
 }

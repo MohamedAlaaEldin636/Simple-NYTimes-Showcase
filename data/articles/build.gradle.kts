@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.Properties
+
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
@@ -5,19 +7,12 @@ plugins {
 	alias(libs.plugins.ksp)
 }
 
-val localPropertiesFile = project.rootProject.file("local.properties")
+val localProperties = Properties()
+localProperties.load(project.rootProject.file("local.properties").inputStream())
 
-val apiServiceNYTimesApiKey = if (localPropertiesFile.exists()) {
-	properties["API_SERVICE_NYTIMES_API_KEY"] as? String
-}else {
-	null
-}
+val apiServiceNYTimesApiKey = localProperties["API_SERVICE_NYTIMES_API_KEY"] as? String
 
-val apiServiceNYTimesApiBaseUrl = if (localPropertiesFile.exists()) {
-	properties["API_SERVICE_NYTIMES_API_BASE_URL"] as? String
-}else {
-	null
-}
+val apiServiceNYTimesApiBaseUrl = localProperties["API_SERVICE_NYTIMES_API_BASE_URL"] as? String
 
 android {
 	namespace = "my.ym.data_articles"

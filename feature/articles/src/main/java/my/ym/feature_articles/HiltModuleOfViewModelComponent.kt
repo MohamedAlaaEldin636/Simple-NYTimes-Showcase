@@ -4,12 +4,17 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import my.ym.data_articles.remote.articles.RemoteDataSourceArticles
+import my.ym.data_articles.remote.articles.RepoArticlesImpl
+import my.ym.domain_articles.models.AppDayPeriodOfMostPopularArticles
 import my.ym.domain_articles.models.AppSnapshotOfArticles
 import my.ym.domain_articles.models.AppViewedArticle
 import my.ym.domain_articles.repos.RepoArticles
+import my.ym.domain_articles.useCases.GetMostPopularViewedArticlesLastDayUseCase
 import my.ym.domain_shared.models.AppResult
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -20,7 +25,7 @@ import kotlin.time.Duration.Companion.seconds
 data object HiltModuleOfViewModelComponent {
 
 	private val fakeRepoArticles get() = object : RepoArticles {
-		override fun getMostPopularViewedArticles(periodInDays: Int): Flow<AppResult<AppSnapshotOfArticles>> {
+		override fun getMostPopularViewedArticles(period: AppDayPeriodOfMostPopularArticles): Flow<AppResult<AppSnapshotOfArticles>> {
 			return flow {
 				emit(AppResult.Loading())
 
@@ -53,9 +58,20 @@ data object HiltModuleOfViewModelComponent {
 		}
 	}
 
+	@ViewModelScoped
 	@Provides
-	fun provideRepoArticles(): RepoArticles {
-		return fakeRepoArticles
+	fun provideRepoArticles(
+		remoteDataSourceArticles: RemoteDataSourceArticles,
+	): RepoArticles {
+		return RepoArticlesImpl(remoteDataSourceArticles = remoteDataSourceArticles)
+	}
+
+	@ViewModelScoped
+	@Provides
+	fun provideGetMostPopularViewedArticlesLastDayUseCase(
+		repoArticles: RepoArticles
+	): GetMostPopularViewedArticlesLastDayUseCase {
+		return GetMostPopularViewedArticlesLastDayUseCase(repoArticles)
 	}
 
 }

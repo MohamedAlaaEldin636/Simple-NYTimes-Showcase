@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import my.ym.domain_articles.repos.RepoArticles
+import my.ym.domain_articles.useCases.GetMostPopularViewedArticlesLastDayUseCase
 import my.ym.domain_shared.models.AppResult
 import my.ym.ui_articles.R
 import my.ym.ui_shared.utils.getLocalizedText
@@ -30,7 +30,7 @@ import kotlin.time.toKotlinDuration
 @HiltViewModel
 class MostPopularArticlesViewModel @Inject constructor(
 	application: Application,
-	private val repoArticles: RepoArticles,
+	private val getMostPopularViewedArticlesLastDayUseCase: GetMostPopularViewedArticlesLastDayUseCase,
 ) : AndroidViewModel(application) {
 
 	var state by mutableStateOf(MostPopularArticlesState())
@@ -71,7 +71,7 @@ class MostPopularArticlesViewModel @Inject constructor(
 		jobOfLoadDataAndObserveIt?.cancel()
 		jobOfLoadDataAndObserveIt = viewModelScope.launch(context = Dispatchers.Default) {
 			// todo repo should handle loading case isa.
-			repoArticles.getMostPopularViewedArticles(periodInDays = 1).collectLatest { appResult ->
+			getMostPopularViewedArticlesLastDayUseCase().collectLatest { appResult ->
 				val newState = when (appResult) {
 					is AppResult.Failure -> {
 						state.copy(

@@ -14,3 +14,11 @@ fun <T> AppResult.Failure.Companion.poorInternetConnection() =
 /** @return failure with [Reason.Unexpected] */
 fun <T> AppResult.Failure.Companion.unexpected(throwable: Throwable? = null) =
 	AppResult.Failure<T>(reason = Reason.Unexpected(throwable))
+
+fun <From, To> AppResult<From>.map(conversionOfSuccess: (From) -> To): AppResult<To> {
+	return when (this) {
+		is AppResult.Loading -> AppResult.Loading()
+		is AppResult.Failure -> AppResult.Failure(reason = reason)
+		is AppResult.Success -> AppResult.Success(data = conversionOfSuccess(data))
+	}
+}
