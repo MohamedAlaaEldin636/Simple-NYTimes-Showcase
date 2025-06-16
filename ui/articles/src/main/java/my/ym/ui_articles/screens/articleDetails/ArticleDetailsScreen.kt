@@ -70,17 +70,16 @@ private fun Sample() = ThemeApp {
 					appResult = AppResult.Success(
 						data = AppViewedArticle(
 							id = 0,
-							title = "TODO()",
-							summary = "TODO()",
-							section = "TODO()",
-							byLine = "TODO()",
-							publishedAt = null/*"TODO()"*/,
-							lastUpdatedAt = null/*"TODO()"*/,
-							keywords = listOf("TODO()"),
-							listOfMedia = emptyList()//TODO()
+							title = "title",
+							summary = "summary",
+							section = "section",
+							byLine = "by line",
+							publishedAt = null,
+							lastUpdatedAt = null,
+							keywords = listOf("Keyword 1", "Keyword 1"),
+							listOfMedia = emptyList()
 						),
 					),
-					//selectedImageIndex = ,
 				)
 			)
 		}

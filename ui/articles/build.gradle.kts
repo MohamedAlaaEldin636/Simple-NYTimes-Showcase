@@ -52,8 +52,8 @@ dependencies {
 	implementation(projects.core.kotlin)
 
 	// Coil
-	implementation("io.coil-kt.coil3:coil-compose:3.2.0")
-	implementation("io.coil-kt.coil3:coil-network-okhttp:3.2.0")
+	implementation(libs.coil3.compose)
+	implementation(libs.coil3.network.okhttp)
 
 	// Androidx
 	implementation(libs.androidx.core.ktx)

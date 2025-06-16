@@ -16,6 +16,9 @@ androidx-hilt-navigation = "1.2.0"
 androidx-appcompat = "1.7.1"
 androidx-room = "2.7.1"
 
+# Coil3
+coil3 = "3.2.0"
+
 # Hilt
 hilt-android = "2.56.2"
 
@@ -71,6 +74,10 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidx-room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
+
+# Coil3
+coil3-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil3" }
+coil3-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil3" }
 
 # Androidx Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
