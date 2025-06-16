@@ -71,3 +71,15 @@ and not whole app by residing in `:test:scenario_name` module if needed
 - Test Cases
   - Made only in `:domain:articles` as I had small amount of time in development due to being 
   busy in the previous days with personal stuff.
+
+## Previews
+
+<img src="previews/1.png" width="200"> 
+<img src="previews/2.png" width="200">
+
+<img src="previews/3.png" width="200"> 
+<img src="previews/4.png" width="200">
+
+<img src="previews/5.png" width="200"> 
+<img src="previews/6.png" width="200">
+

@@ -75,7 +75,7 @@ class RepoArticlesImpl(
 				).map {
 					if (it == null) {
 						AppResult.Failure(
-							reason = AppResult.Failure.Reason.Unexpected(
+							reason = failureReason ?: AppResult.Failure.Reason.Unexpected(
 								RuntimeException("Null from database")
 							)
 						)
