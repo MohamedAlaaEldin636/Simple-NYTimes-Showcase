@@ -3,6 +3,7 @@
 - [How to Build The Project](#how-to-build-the-project)
 - [Project Overview](#project-overview)
 - [Previews](#previews)
+- [Areas of improvements](#areas-of-improvements)
 
 ## How to Build The Project
 
@@ -84,3 +85,9 @@ and not whole app by residing in `:test:scenario_name` module if needed
 <img src="previews/5.png" width="200"> 
 <img src="previews/6.png" width="200">
 
+## Areas of improvements
+
+1- Creation of a GitHub workflow via GitHib Actions to trigger a GitHub Release on change in 
+`master` branch which helps in creation of latest APK merged in `master`.
+2- Add more test cases
+3- Monitoring internet connection in code to help in better UI messages to user.
