@@ -1,8 +1,17 @@
 # Simple NYTimes Showcase
 
 - [How to Build The Project](#how-to-build-the-project)
+- [Project Overview](#project-overview)
 
-## Currently Under Development
+## How to Build The Project
+
+- You will need to create a `local.properties` file, with below data replacing values with correct
+  implementations of them.
+  - API_SERVICE_NYTIMES_API_KEY={yourApiKey}
+  - API_SERVICE_NYTIMES_API_BASE_URL=baseUrl
+  - sdk.dir=yourDirPath
+
+## Project Overview
 
 - This Repo contains a simple android app just to showcase coding using **_NYTimes Rest API_** inshallah.
 
@@ -59,10 +68,6 @@
 - Additional Note, In a large app there even can be test module to test 2 or more related features
 and not whole app by residing in `:test:scenario_name` module if needed
 
-## How to Build The Project
-
-- You will need to create a `local.properties` file, with below data replacing values with correct
-implementations of them.
-  - API_SERVICE_NYTIMES_API_KEY={yourApiKey}
-  - API_SERVICE_NYTIMES_API_BASE_URL=baseUrl
-  - sdk.dir=yourDirPath
+- Test Cases
+  - Made only in `:domain:articles` as I had small amount of time in development due to being 
+  busy in the previous days with personal stuff.
