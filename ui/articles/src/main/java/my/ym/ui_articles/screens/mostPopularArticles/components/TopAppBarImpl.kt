@@ -62,8 +62,6 @@ internal fun MostPopularArticlesScreenScope.TopAppBarImpl(
 			}
 		},
 		actions = {
-			// todo settings as well if needed inshallah.
-
 			IconButton(
 				enabled = isInfoTopSheetShown.not(),
 				onClick = showInfoTopSheet,
