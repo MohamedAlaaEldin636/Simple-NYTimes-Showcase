@@ -2,6 +2,7 @@
 
 - [How to Build The Project](#how-to-build-the-project)
 - [Project Overview](#project-overview)
+- [Previews](#previews)
 
 ## How to Build The Project
 
