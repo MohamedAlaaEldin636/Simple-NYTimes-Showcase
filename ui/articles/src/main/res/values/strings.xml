@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="most_popular_articles">Most Popular Articles</string>
+    <string name="by_views_count_in_last_day">By views count in last Day</string>
+    <string name="information">Information</string>
+    <string name="close">Close</string>
+    <string name="most_popular_article_screen_info_text_1">This Screen Represents The New York Times Most Popular Articles which has highest views count in last Day.</string>
+    <string name="most_popular_article_screen_info_text_2">This is a simple Android App to showcase usage of NYTimes Rest API in a Clean Architecture and a modularization by feature approach with MVI design pattern</string>
+    <string name="check_the_github_repo_from_here">Check the GitHub Repo from here</string>
+    <string name="ok">OK</string>
+    <string name="you_can_pull_to_refresh">You can Pull to Refresh</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="old_cached_data_and_unable_to_get_fresh_data_now">Oops! It looks like we\'re having trouble getting fresh data, and the content we have saved is a bit old. Please ensure you have a stable internet connection and try reloading.</string>
+    <string name="try_again">Try Again</string>
+    <string name="refresh_the_data">Refresh the Data</string>
+    <string name="empty_data_msg">No Articles Found\nWait for some time and refresh the Data</string>
+    <string name="published_at">Published at</string>
+    <string name="just_now">Just Now</string>
+    <string name="moments_ago">Moments Ago</string>
+    <string name="minutes_ago">Minutes Ago</string>
+    <string name="hours_ago">Hours Ago</string>
+    <string name="updated">Updated</string>
+    <string name="data_fetched_from_internet_successfully_and_is_now_up_to_date">Data fetched from internet successfully\nAnd is now up to date</string>
+    <string name="details">Details</string>
+    <string name="loading_ellipsis">Loading…</string>
+    <string name="title">Title</string>
+    <string name="summary">Summary</string>
+    <string name="last_updated_at">Last Updated At</string>
+    <string name="empty_url">Empty Url</string>
+    <string name="error_in_loading_the_image">Error in Loading the Image</string>
+    <string name="keywords">Keywords</string>
+</resources>

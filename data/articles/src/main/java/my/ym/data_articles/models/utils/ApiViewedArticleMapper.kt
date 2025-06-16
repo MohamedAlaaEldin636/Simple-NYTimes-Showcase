@@ -9,6 +9,7 @@ private const val SEMI_COLON = ';'
 
 fun ApiViewedArticle.toAppViewedArticle(): AppViewedArticle {
 	return AppViewedArticle(
+		id = id ?: 0,
 		title = title.orEmpty(),
 		summary = summary.orEmpty(),
 		section = section.orEmpty(),
@@ -16,6 +17,6 @@ fun ApiViewedArticle.toAppViewedArticle(): AppViewedArticle {
 		publishedAt = ApiDateFormat(publishedDate).toLocalDateOrNull(),
 		lastUpdatedAt = ApiDateAndTimeFormat(lastUpdatedDateAndTime).toLocalDateTimeOrNull(),
 		keywords = keywords.orEmpty().split(SEMI_COLON),
-		media = media.orEmpty().map { it.toAppMedia() }
+		listOfMedia = listOfMedia.orEmpty().map { it.toAppMedia() }
 	)
 }
