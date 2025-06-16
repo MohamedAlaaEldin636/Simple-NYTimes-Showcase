@@ -1,5 +1,7 @@
 package my.ym.ui_articles.screens.articleDetails.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -65,7 +67,7 @@ internal fun ArticleDetailsScreenScope.ListOfMediaImpl(
 		Box(
 			modifier = Modifier
 				.fillMaxWidth()
-				.height(250.dp)
+				.height(300.dp)
 				.shadow(
 					elevation = 4.dp,
 					shape = RectangleShape,
@@ -118,21 +120,34 @@ internal fun ArticleDetailsScreenScope.ListOfMediaImpl(
 					contentDescription = null,
 					contentScale = ContentScale.Crop,
 					loading = {
-						CircularProgressIndicator()
+						Box(
+							modifier = Modifier.fillMaxSize(),
+							contentAlignment = Alignment.Center,
+						) {
+							CircularProgressIndicator()
+						}
 					},
 					error = {
-						Text(
-							modifier = Modifier
-								.padding(all = 16.dp),
-							text = stringResource(R.string.error_in_loading_the_image),
-							textAlign = TextAlign.Center,
-							color = ThemeApp.colorScheme.onBackground,
-						)
+						Box(
+							modifier = Modifier.fillMaxSize(),
+							contentAlignment = Alignment.Center,
+						) {
+							Text(
+								modifier = Modifier
+									.padding(all = 16.dp),
+								text = stringResource(R.string.error_in_loading_the_image),
+								textAlign = TextAlign.Center,
+								color = ThemeApp.colorScheme.onBackground,
+							)
+						}
 					}
 				)
 			}
 
 			LazyRow(
+				modifier = Modifier
+					.fillMaxWidth()
+					.align(alignment = Alignment.BottomCenter),
 				contentPadding = PaddingValues(all = 16.dp),
 				horizontalArrangement = Arrangement.spacedBy(
 					space = 16.dp,
@@ -140,13 +155,34 @@ internal fun ArticleDetailsScreenScope.ListOfMediaImpl(
 				),
 				verticalAlignment = Alignment.CenterVertically,
 			) {
+				val shape = RoundedCornerShape(size = 12.dp)
+
 				itemsIndexed(items = listOfMedia) { index, item ->
+					val isSelected = index == selectedImageIndex
+
+					val borderThickness by animateDpAsState(
+						targetValue = if (isSelected) 4.dp else 2.dp
+					)
+
+					val borderColor by animateColorAsState(
+						targetValue = if (isSelected) {
+							ThemeApp.extendedColorScheme.success.color
+						}else {
+							ThemeApp.colorScheme.primary
+						}
+					)
+
+					val size = 60.dp
 					Box(
 						modifier = Modifier
-							.size(size = 70.dp)
-							.clip(shape = RoundedCornerShape(size = 12.dp))
-							.background(color = ThemeApp.colorScheme.background)
-							.border(width = 1.dp, color = ThemeApp.colorScheme.primary)
+							.size(size = size)
+							.clip(shape = shape)
+							.background(color = ThemeApp.colorScheme.background, shape = shape)
+							.border(
+								width = borderThickness,
+								color = borderColor,
+								shape = shape,
+							)
 							.clickable {
 								selectImage(index)
 							}

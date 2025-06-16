@@ -67,7 +67,7 @@ internal fun MostPopularArticlesScreenScope.MessageAtBottomImpl(
 
 		if (autoHide) {
 			LaunchedEffect(key1 = Unit) {
-				delay(4.seconds)
+				delay(3.seconds)
 
 				onDismissRequest()
 			}

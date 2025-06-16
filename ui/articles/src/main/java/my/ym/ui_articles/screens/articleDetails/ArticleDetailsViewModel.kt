@@ -45,6 +45,8 @@ class ArticleDetailsViewModel @Inject constructor(
 	fun handleIntent(intent: ArticleDetailsIntent) {
 		state = when (intent) {
 			is ArticleDetailsIntent.SelectImage -> {
+				loopImages()
+
 				state.copy(
 					selectedImageIndex = intent.index
 				)
@@ -53,6 +55,30 @@ class ArticleDetailsViewModel @Inject constructor(
 				loadDataAndObserveIt()
 
 				return
+			}
+		}
+	}
+
+	private fun loopImages() {
+		jobOfLoopOfAutoMoveToNextImage?.cancel()
+		jobOfLoopOfAutoMoveToNextImage = viewModelScope.launch(Dispatchers.Default) {
+			val sizeOfImages = (state.appResult as? AppResult.Success)?.data
+				?.toListOfAppMediaMetadataWithType()?.size ?: return@launch
+			while (true) {
+				if (isActive.not()) {
+					break
+				}
+
+				delay(5.seconds)
+
+				withContext(Dispatchers.Main) {
+					handleIntent(
+						intent = ArticleDetailsIntent.moveToNextImage(
+							currentIndex = state.selectedImageIndex,
+							imagesSize = sizeOfImages,
+						)
+					)
+				}
 			}
 		}
 	}
@@ -69,33 +95,16 @@ class ArticleDetailsViewModel @Inject constructor(
 				jobOfLoopOfAutoMoveToNextImage?.cancel()
 
 				if (appResult is AppResult.Success) {
-					val sizeOfImages = appResult.data.toListOfAppMediaMetadataWithType().size
-					if (sizeOfImages > 0) {
-						jobOfLoopOfAutoMoveToNextImage = launch(Dispatchers.Default) {
-							while (true) {
-								if (isActive.not()) {
-									break
-								}
-
-								delay(2.seconds)
-
-								withContext(Dispatchers.Main) {
-									handleIntent(
-										intent = ArticleDetailsIntent.moveToNextImage(
-											currentIndex = state.selectedImageIndex,
-											imagesSize = sizeOfImages,
-										)
-									)
-								}
-							}
-						}
-					}
+					loopImages()
 				}
 			}
 		}
 	}
 
 	override fun onCleared() {
+		jobOfLoopOfAutoMoveToNextImage?.cancel()
+		jobOfLoopOfAutoMoveToNextImage = null
+
 		jobOfLoadDataAndObserveIt?.cancel()
 		jobOfLoadDataAndObserveIt = null
 

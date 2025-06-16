@@ -28,4 +28,5 @@
     <string name="last_updated_at">Last Updated At</string>
     <string name="empty_url">Empty Url</string>
     <string name="error_in_loading_the_image">Error in Loading the Image</string>
+    <string name="keywords">Keywords</string>
 </resources>
