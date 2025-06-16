@@ -12,10 +12,12 @@ import my.ym.data_articles.local.database.entities.DbEntityKeyword
 import my.ym.data_articles.local.database.entities.DbEntityRelationSnapshotOfViewedArticlesAndViewedArticle
 import my.ym.data_articles.local.database.entities.DbEntityRelationViewedArticleAndKeyword
 import my.ym.data_articles.models.utils.toAppSnapshotOfArticles
+import my.ym.data_articles.models.utils.toAppViewedArticle
 import my.ym.data_articles.models.utils.toDbEntitySnapshotOfViewedArticles
 import my.ym.data_articles.models.utils.toDbEntityViewedArticle
 import my.ym.data_shared.local.BaseLocalDataSource
 import my.ym.domain_articles.models.AppSnapshotOfArticles
+import my.ym.domain_articles.models.AppViewedArticle
 import my.ym.domain_shared.models.AppResult
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -28,6 +30,14 @@ class LocalDataSourceArticles @Inject constructor(
 	private val daoRelationViewedArticleAndKeyword: DaoRelationViewedArticleAndKeyword,
 	private val daoRelationSnapshotOfViewedArticlesAndViewedArticle: DaoRelationSnapshotOfViewedArticlesAndViewedArticle,
 ) : BaseLocalDataSource() {
+
+	fun getAppViewedArticle(id: Long): Flow<AppViewedArticle?> {
+		return daoRelationViewedArticleAndKeyword.getViewedArticleWithKeywordsAsFlow(
+			id = id
+		).map { dbViewedArticleWithKeywords ->
+			dbViewedArticleWithKeywords?.toAppViewedArticle()
+		}
+	}
 
 	fun getAppSnapshotOfArticles(
 		fetchFailureReason: AppResult.Failure.Reason?,

@@ -10,6 +10,7 @@ import my.ym.data_articles.remote.articles.RemoteDataSourceArticles
 import my.ym.data_articles.repos.RepoArticlesImpl
 import my.ym.domain_articles.repos.RepoArticles
 import my.ym.domain_articles.useCases.GetMostPopularViewedArticlesLastDayUseCase
+import my.ym.domain_articles.useCases.GetViewedArticleDetailsUseCase
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -33,6 +34,14 @@ data object HiltModuleOfViewModelComponent {
 		repoArticles: RepoArticles
 	): GetMostPopularViewedArticlesLastDayUseCase {
 		return GetMostPopularViewedArticlesLastDayUseCase(repoArticles)
+	}
+
+	@ViewModelScoped
+	@Provides
+	fun provideGetViewedArticleDetailsUseCase(
+		repoArticles: RepoArticles
+	): GetViewedArticleDetailsUseCase {
+		return GetViewedArticleDetailsUseCase(repoArticles)
 	}
 
 }

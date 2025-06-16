@@ -11,6 +11,7 @@ import my.ym.data_articles.models.utils.toAppSnapshotOfArticles
 import my.ym.data_articles.remote.articles.RemoteDataSourceArticles
 import my.ym.domain_articles.models.AppDayPeriodOfMostPopularArticles
 import my.ym.domain_articles.models.AppSnapshotOfArticles
+import my.ym.domain_articles.models.AppViewedArticle
 import my.ym.domain_articles.repos.RepoArticles
 import my.ym.domain_shared.models.AppResult
 
@@ -18,6 +19,30 @@ class RepoArticlesImpl(
 	private val remoteDataSourceArticles: RemoteDataSourceArticles,
 	private val localDataSourceArticles: LocalDataSourceArticles,
 ) : RepoArticles {
+
+	override fun getAppViewedArticle(id: Long): Flow<AppResult<AppViewedArticle>> {
+		return flow {
+			// Loading before getting any value
+			emit(AppResult.Loading())
+
+			// Get from database only since no api from backend for it (at this moment) inshallah.
+			emitAll(
+				localDataSourceArticles.getAppViewedArticle(id = id).map {
+					if (it == null) {
+						AppResult.Failure(
+							reason = AppResult.Failure.Reason.Unexpected(
+								RuntimeException("Null from database")
+							)
+						)
+					}else {
+						AppResult.Success(
+							data = it
+						)
+					}
+				}
+			)
+		}
+	}
 
 	override fun getMostPopularViewedArticles(
 		period: AppDayPeriodOfMostPopularArticles

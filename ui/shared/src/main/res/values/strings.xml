@@ -7,4 +7,6 @@
     <string name="too_many_requests_please_wait_sometime_before_retry">Too many requests\nPlease wait sometime before Retry</string>
     <string name="issue_in_decoding_the_data">Issue in decoding the Data</string>
     <string name="incorrect_data_received_from_internet">Incorrect Data Received from Internet</string>
+    <string name="num_colon_num_am">%1$d:%2$d AM</string>
+    <string name="num_colon_num_pm">%1$d:%2$d PM</string>
 </resources>

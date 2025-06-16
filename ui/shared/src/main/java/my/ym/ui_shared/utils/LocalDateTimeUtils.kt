@@ -1,14 +1,18 @@
 package my.ym.ui_shared.utils
 
-import androidx.compose.ui.text.intl.Locale
 import java.time.LocalDate
-import java.time.format.TextStyle
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 fun LocalDate.getLocalizedText(): String {
-	val monthText = month.getDisplayName(
-		TextStyle.FULL,
-		java.util.Locale(Locale.current.language.ifEmpty { java.util.Locale.ENGLISH.language })
-	)
+	return format(DateTimeFormatter.ofPattern("d MMM yyyy"))
+}
 
-	return "$dayOfMonth $monthText $year"
+fun LocalTime.getLocalizedText(): String {
+	return format(DateTimeFormatter.ofPattern("hh:mm a"))
+}
+
+fun LocalDateTime.getLocalizedText(): String {
+	return "${toLocalDate().getLocalizedText()} ${toLocalTime().getLocalizedText()}"
 }

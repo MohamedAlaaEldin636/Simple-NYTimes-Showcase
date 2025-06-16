@@ -6,7 +6,7 @@ import my.ym.domain_shared.models.AppResult
 import my.ym.domain_articles.models.AppSnapshotOfArticles
 import my.ym.domain_articles.repos.RepoArticles
 
-class GetMostPopularViewedArticlesLastDayUseCase /*@Inject */constructor(
+class GetMostPopularViewedArticlesLastDayUseCase(
 	private val repoArticles: RepoArticles,
 ) {
 

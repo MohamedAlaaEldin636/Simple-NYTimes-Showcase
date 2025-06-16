@@ -21,4 +21,11 @@
     <string name="hours_ago">Hours Ago</string>
     <string name="updated">Updated</string>
     <string name="data_fetched_from_internet_successfully_and_is_now_up_to_date">Data fetched from internet successfully\nAnd is now up to date</string>
+    <string name="details">Details</string>
+    <string name="loading_ellipsis">Loading…</string>
+    <string name="title">Title</string>
+    <string name="summary">Summary</string>
+    <string name="last_updated_at">Last Updated At</string>
+    <string name="empty_url">Empty Url</string>
+    <string name="error_in_loading_the_image">Error in Loading the Image</string>
 </resources>

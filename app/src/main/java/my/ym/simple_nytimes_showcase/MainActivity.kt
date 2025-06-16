@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
+import my.ym.ui_articles.screens.articleDetails.composableOfArticleDetailsScreen
+import my.ym.ui_articles.screens.articleDetails.navToArticleDetailsScreen
 import my.ym.ui_articles.screens.mostPopularArticles.MostPopularArticlesDestination
 import my.ym.ui_articles.screens.mostPopularArticles.composableOfMostPopularArticlesScreen
 import my.ym.ui_shared.theme.ThemeApp
@@ -35,7 +37,15 @@ class MainActivity : ComponentActivity() {
 				) {
 					composableOfMostPopularArticlesScreen(
 						goToArticleDetailsScreen = { id ->
-							//TODO("id -> $id")
+							navController.navToArticleDetailsScreen(
+								articleId = id
+							)
+						}
+					)
+
+					composableOfArticleDetailsScreen(
+						goToPreviousScreen = {
+							navController.navigateUp()
 						}
 					)
 				}
