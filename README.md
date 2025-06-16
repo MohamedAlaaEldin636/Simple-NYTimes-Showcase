@@ -8,11 +8,13 @@
 
 ## How to Build The Project
 
+- Clone the Project
 - You will need to create a `local.properties` file, with below data replacing values with correct
   implementations of them.
   - API_SERVICE_NYTIMES_API_KEY={yourApiKey}
   - API_SERVICE_NYTIMES_API_BASE_URL=baseUrl
   - sdk.dir=yourDirPath
+- Build & Run the App and Enjoy
  
 ## Libraries Used
 - Compose -> Building the UI
