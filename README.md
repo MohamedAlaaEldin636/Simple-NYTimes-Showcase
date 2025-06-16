@@ -1,6 +1,7 @@
 # Simple NYTimes Showcase
 
 - [How to Build The Project](#how-to-build-the-project)
+- [Libraries Used](#libraries-used)
 - [Project Overview](#project-overview)
 - [Previews](#previews)
 - [Areas of improvements](#areas-of-improvements)
@@ -12,6 +13,18 @@
   - API_SERVICE_NYTIMES_API_KEY={yourApiKey}
   - API_SERVICE_NYTIMES_API_BASE_URL=baseUrl
   - sdk.dir=yourDirPath
+ 
+## Libraries Used
+- Compose -> Building the UI
+- Hilt -> Dependency Injection
+- Navigation -> App Flow Navigation
+- Retrofit -> HTTP client for network connections
+- Room -> Local Database (Used as a single source of truth and to support offline experience)
+- Coroutines -> For Asynchronous Operations
+- Coil3 -> Image Loading
+- Timber -> Logging
+- Mockk -> Kotlin Unit Testing 
+- Jupiter -> Junit 5
 
 ## Project Overview
 
