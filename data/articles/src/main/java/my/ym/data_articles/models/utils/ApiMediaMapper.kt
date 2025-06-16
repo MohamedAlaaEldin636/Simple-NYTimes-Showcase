@@ -8,6 +8,6 @@ fun ApiMedia.toAppMedia(): AppMedia {
 		type = if (isImage) AppMedia.Type.Image else AppMedia.Type.Other,
 		caption = caption.orEmpty(),
 		copyright = copyright.orEmpty(),
-		mediaMetadata = mediaMetadata.orEmpty().map { it.toAppMediaMetadata() }
+		listOfMediaMetadata = listOfMediaMetadata.orEmpty().map { it.toAppMediaMetadata() }
 	)
 }

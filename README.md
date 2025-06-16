@@ -50,3 +50,11 @@
 
 - Additional Note, In a large app there even can be test module to test 2 or more related features
 and not whole app by residing in `:test:scenario_name` module if needed
+
+## Building The Project
+
+- You will need to create a `local.properties` file, with below data replacing values with correct
+implementations of them.
+  - sdk.dir=yourDirPath
+  - API_SERVICE_NYTIMES_API_KEY=yourApiKey
+  - API_SERVICE_NYTIMES_API_BASE_URL=baseUrl
