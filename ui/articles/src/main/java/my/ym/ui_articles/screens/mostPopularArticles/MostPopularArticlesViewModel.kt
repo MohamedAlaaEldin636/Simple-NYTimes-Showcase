@@ -142,9 +142,6 @@ class MostPopularArticlesViewModel @Inject constructor(
 		}
 	}
 
-	// todo see if can be done in repo msln inshallah.
-	//  to do so we need to change AppSnapshot... and instead have fetchedFromApiSince: Duration
-	//  but database kept at and just loop inside the flow function inshallah.
 	private fun loopAndUpdateTheUpdatedSinceText(initialDelay: kotlin.time.Duration) {
 		jobOfLoopOfTheUpdatedSinceText?.cancel()
 		jobOfLoopOfTheUpdatedSinceText = viewModelScope.launch(context = Dispatchers.Default) {

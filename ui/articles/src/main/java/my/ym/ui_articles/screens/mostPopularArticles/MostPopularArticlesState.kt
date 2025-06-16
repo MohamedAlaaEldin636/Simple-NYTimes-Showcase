@@ -37,10 +37,6 @@ data class MostPopularArticlesState(
 	val previousMessageAtBottom: MessageWithType? = null,
 
 	val showInfoTopSheet: Boolean = false,
-
-	// todo.
-	//val showFavorites: Boolean,
-	//val showHistory: Boolean,
 ) {
 
 	val isLoading: Boolean get() = loadingStatus == LoadingStatus.Other
