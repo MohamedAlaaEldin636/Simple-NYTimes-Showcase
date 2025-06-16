@@ -87,7 +87,10 @@ and not whole app by residing in `:test:scenario_name` module if needed
 
 ## Areas of improvements
 
-1- Creation of a GitHub workflow via GitHib Actions to trigger a GitHub Release on change in 
+1. Creation of a GitHub workflow via GitHib Actions to trigger a GitHub Release on change in 
 `master` branch which helps in creation of latest APK merged in `master`.
-2- Add more test cases
-3- Monitoring internet connection in code to help in better UI messages to user.
+2. Add more test cases
+3. Monitoring internet connection in code to help in better UI messages to user.
+4. Add more features like favorite articles, other end points, pagination (if backend supports it, because up till this point it doesn't).
+5. History where you see the most popular saved in database before not latestyou have only
+6. UI look & feel for sure but I'm not a designer 😅😅
