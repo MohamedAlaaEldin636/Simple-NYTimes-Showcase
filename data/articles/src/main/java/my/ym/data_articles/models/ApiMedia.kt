@@ -9,7 +9,7 @@ data class ApiMedia(
 	val caption: String?,
 	val copyright: String?,
 	@SerializedName("media-metadata")
-	val mediaMetadata: List<ApiMediaMetadata>?,
+	val listOfMediaMetadata: List<ApiMediaMetadata>?,
 ) {
 	val isImage get() = type == API_IMAGE_TYPE
 }

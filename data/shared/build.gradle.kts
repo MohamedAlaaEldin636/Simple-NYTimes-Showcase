@@ -1,6 +1,7 @@
 plugins {
 	alias(libs.plugins.android.library)
 	alias(libs.plugins.kotlin.android)
+	alias(libs.plugins.ksp)
 }
 
 android {
@@ -38,14 +39,24 @@ android {
 dependencies {
 
 	// Java 8+ API desugaring support
-	coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.3")
+	coreLibraryDesugaring(libs.android.desugar.jdk)
 
 	// Local Modules
 	implementation(projects.core.kotlin)
 	implementation(projects.domain.articles)
 
+	// Timber
+	implementation(libs.timber)
+
 	// Androidx
 	implementation(libs.androidx.core.ktx)
+	implementation(libs.androidx.room.runtime)
+	ksp(libs.androidx.room.compiler)
+	implementation(libs.androidx.room.ktx)
+
+	// Retrofit
+	implementation(libs.retrofit2.retrofit)
+	implementation(libs.retrofit2.converter.gson)
 
 	// Test
 	testImplementation(libs.junit)

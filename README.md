@@ -1,5 +1,7 @@
 # Simple NYTimes Showcase
 
+- [How to Build The Project](#how-to-build-the-project)
+
 ## Currently Under Development
 
 - This Repo contains a simple android app just to showcase coding using **_NYTimes Rest API_** inshallah.
@@ -17,6 +19,7 @@
       - Optional but important if needed
     - `:core:android` -> contains utilities related to android library module
       - Optional but important if needed
+      - Not added in this project
   - Domain
     - `:domain:shared` -> for common models used among several features
       - Optional but important if needed
@@ -31,11 +34,16 @@
       - Optional but important if needed
     - `:ui:articles` -> implements screens representing articles feature
   - Feature
+    - `:feature:shared` -> Android module, uses hilt to wire above dependencies together, shared 
+    submodule specifically adds hilt dependencies needed by all features example core network 
+    requirements like retrofit instance.
     - `:feature:articles` -> Android module, uses hilt to wire above dependencies together so that 
     it reduces work in `:app` modules by making the feature cleaner as it handles even DI for itself 
     and make `:app` dependencies become less, and exposes only the ui module of the feature, instead 
     of making `:app` module depend on all 3 ui, domain & data to correctly use Hilt inshallah.
       - Optional but important if needed
+    - `:feature:combinedModules` -> implements all other `:feature:*` modules to add hilt injection
+    for any dependency that need to have access for all other modules like Room Database instance.
   - App
     - `:app` -> entry point of the application and contains the navigation layer to tie all features 
     and even the screens in a single feature inshallah.
@@ -50,3 +58,11 @@
 
 - Additional Note, In a large app there even can be test module to test 2 or more related features
 and not whole app by residing in `:test:scenario_name` module if needed
+
+## How to Build The Project
+
+- You will need to create a `local.properties` file, with below data replacing values with correct
+implementations of them.
+  - API_SERVICE_NYTIMES_API_KEY={yourApiKey}
+  - API_SERVICE_NYTIMES_API_BASE_URL=baseUrl
+  - sdk.dir=yourDirPath

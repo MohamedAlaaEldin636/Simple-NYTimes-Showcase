@@ -13,6 +13,7 @@ import my.ym.domain_shared.models.AppResult
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import kotlinx.coroutines.test.runTest
+import my.ym.domain_shared.utils.noInternetConnection
 import org.junit.jupiter.api.assertInstanceOf
 
 /** Or run ./gradlew :domain:articles:test */
@@ -28,7 +29,7 @@ class TestGetMostPopularViewedArticlesUseCase {
 
 	@Test
 	fun `All AppResult Cases`() = runTest {
-		every { useCase(any()) } returns flow { emit(AppResult.Failure.NoInternetConnection()) }
+		every { useCase(any()) } returns flow { emit(AppResult.Failure.noInternetConnection()) }
 
 		every { useCase(match { it == 1 || it == 7}) } returns flow { emit(AppResult.Loading()) }
 

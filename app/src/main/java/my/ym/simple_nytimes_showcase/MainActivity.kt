@@ -5,43 +5,52 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import my.ym.simple_nytimes_showcase.ui.theme.SimpleNYTimesShowcaseTheme
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import dagger.hilt.android.AndroidEntryPoint
+import my.ym.ui_articles.screens.articleDetails.composableOfArticleDetailsScreen
+import my.ym.ui_articles.screens.articleDetails.navToArticleDetailsScreen
+import my.ym.ui_articles.screens.mostPopularArticles.MostPopularArticlesDestination
+import my.ym.ui_articles.screens.mostPopularArticles.composableOfMostPopularArticlesScreen
+import my.ym.ui_shared.theme.ThemeApp
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+
 		enableEdgeToEdge()
+
 		setContent {
-			SimpleNYTimesShowcaseTheme {
-				Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-					Greeting(
-						name = "Android",
-						modifier = Modifier.padding(innerPadding)
+			ThemeApp {
+				val navController = rememberNavController()
+
+				NavHost(
+					modifier = Modifier
+						.systemBarsPadding()
+						.fillMaxSize(),
+					navController = navController,
+					startDestination = MostPopularArticlesDestination
+				) {
+					composableOfMostPopularArticlesScreen(
+						goToArticleDetailsScreen = { id ->
+							navController.navToArticleDetailsScreen(
+								articleId = id
+							)
+						}
+					)
+
+					composableOfArticleDetailsScreen(
+						goToPreviousScreen = {
+							navController.navigateUp()
+						}
 					)
 				}
 			}
 		}
 	}
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-	Text(
-		text = "Hello $name!",
-		modifier = modifier
-	)
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-	SimpleNYTimesShowcaseTheme {
-		Greeting("Android")
-	}
 }
